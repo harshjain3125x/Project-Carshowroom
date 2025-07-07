@@ -1,3 +1,4 @@
+//New project Car Showroom
 import java.sql.*;
 import java.time.LocalDate;
 import javax.swing.*;
@@ -6,7 +7,7 @@ import javax.swing.table.*;
 public class CARSHOWROOZ {
 
     
-    private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/carshowroom";
+    private static final String DB_URL = "jdbc:mysql://127.0.0.1:3307/carshowroom";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "5202";
 
