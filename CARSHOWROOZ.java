@@ -40,7 +40,7 @@ public class CARSHOWROOZ {
                     
                     try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
                          PreparedStatement preparedStatement = connection.prepareStatement(
-                             "INSERT INTO cars_name(name, price) VALUES(?, ?)")) {
+                             "INSERT INTO cars_name(car_name, price) VALUES(?, ?)")) {
                         
                         preparedStatement.setString(1, debu);
                         preparedStatement.setInt(2, debn);
@@ -59,7 +59,7 @@ public class CARSHOWROOZ {
                     
                     try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
                          PreparedStatement pstmt = connection.prepareStatement(
-                             "UPDATE cars_name SET price = ? WHERE name = ?")) {
+                             "UPDATE cars_name SET price = ? WHERE car_name = ?")) {
                         
                         pstmt.setInt(1, debn);
                         pstmt.setString(2, debu);
@@ -85,31 +85,31 @@ public class CARSHOWROOZ {
         int budget = Integer.parseInt(JOptionPane.showInputDialog("Enter your budget"));
         
         if (budget > 100000 && budget <= 2000000) {
-            query = "SELECT name, price FROM cars_name WHERE price > 100000 AND price <= 2000000";
+            query = "SELECT car_name, price FROM cars_name WHERE price > 100000 AND price <= 2000000";
             connectionmaker(query);
             selectedCar = JOptionPane.showInputDialog("Enter the car you want to purchase");
             carPrice = getCarPrice(selectedCar);
         } 
         else if (budget > 2000000 && budget <= 3000000) {
-            query = "SELECT name, price FROM cars_name WHERE price > 2000000 AND price <= 3000000";
+            query = "SELECT car_name, price FROM cars_name WHERE price > 2000000 AND price <= 3000000";
             connectionmaker(query);
             selectedCar = JOptionPane.showInputDialog("Enter the car you want to purchase");
             carPrice = getCarPrice(selectedCar);
         } 
         else if (budget > 3000000 && budget <= 4000000) {
-            query = "SELECT name, price FROM cars_name WHERE price > 3000000 AND price <= 4000000";
+            query = "SELECT car_name, price FROM cars_name WHERE price > 3000000 AND price <= 4000000";
             connectionmaker(query);
             selectedCar = JOptionPane.showInputDialog("Enter the car you want to purchase");
             carPrice = getCarPrice(selectedCar);
         } 
         else if (budget > 4000000 && budget <= 6000000) {
-            query = "SELECT name, price FROM cars_name WHERE price > 4000000 AND price <= 6000000";
+            query = "SELECT car_name, price FROM cars_name WHERE price > 4000000 AND price <= 6000000";
             connectionmaker(query);
             selectedCar = JOptionPane.showInputDialog("Enter the car you want to purchase");
             carPrice = getCarPrice(selectedCar);
         } 
         else if (budget > 6000000) {
-            query = "SELECT name, price FROM cars_name WHERE price > 6000000";
+            query = "SELECT car_name, price FROM cars_name WHERE price > 6000000";
             connectionmaker(query);
             selectedCar = JOptionPane.showInputDialog("Enter the car you want to purchase");
             carPrice = getCarPrice(selectedCar);
@@ -140,6 +140,7 @@ public class CARSHOWROOZ {
                     preparedStatement.setString(5, selectedCar);
                     
                     int rowsAffected = preparedStatement.executeUpdate();
+                    
                     if (rowsAffected > 0) {
                         JOptionPane.showMessageDialog(null, "Thank you for your purchase!");
                     }
