@@ -161,7 +161,7 @@ public class CARSHOWROOZ {
         int price = 0;
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(
-                 "SELECT price FROM cars_name WHERE name = ?")) {
+                 "SELECT price FROM cars_name WHERE car_name = ?")) {
             
             preparedStatement.setString(1, carName);
             ResultSet rs = preparedStatement.executeQuery();
@@ -191,7 +191,7 @@ public class CARSHOWROOZ {
              ResultSet resultSet = statement.executeQuery(query)) {
             
             while (resultSet.next()) {
-                String carName = resultSet.getString("name");
+                String carName = resultSet.getString("car_name");
                 int carPrice = resultSet.getInt("price");
                 tableModel.addRow(new Object[]{carName, String.format("%,d", carPrice)});
             }
